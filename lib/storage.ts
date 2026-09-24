@@ -119,7 +119,9 @@ export async function getPayoutProfile(id: string): Promise<PayoutProfile|null> 
 
 export async function saveAudio(key: string, data: Uint8Array, mimeType: string) {
   if (useNetlifyBlob()) {
-    await recordingStore().set(key, data, { metadata: { contentType: mimeType } });
+    const arrayBuffer = new ArrayBuffer(data.byteLength);
+    new Uint8Array(arrayBuffer).set(data);
+    await recordingStore().set(key, arrayBuffer, { metadata: { contentType: mimeType } });
     return;
   }
   await ensureStorage();
