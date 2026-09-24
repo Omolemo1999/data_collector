@@ -5,3 +5,4 @@ recordings/*
 !recordings/.gitkeep
 data/recordings.json
 *.log
+.env.*
