@@ -1,0 +1,7 @@
+node_modules
+.next
+.env.local
+recordings/*
+!recordings/.gitkeep
+data/recordings.json
+*.log
